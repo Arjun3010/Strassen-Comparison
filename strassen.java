@@ -1,5 +1,14 @@
-class Strassen {
-    public int[][] multiply(int[][] A, int[][] B)
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+public class Main
+{
+         public int[][] multiply(int[][] A, int[][] B)
     {
         int n = A.length;
         int[][] R = new int[n][n];
@@ -82,14 +91,10 @@ class Strassen {
             for (int j1 = 0, j2 = jB; j1 < C.length; j1++, j2++)
                 P[i2][j2] = C[i1][j1];
     }
-
-    public static void main(String[] args)
-    {
-        System.out.println("Strassen Multiplication Algorithm Implementation For Matrix Multiplication :\n");
-        
-        Main s = new Main();
-        
-        int N = 4;
+	public static void main(String[] args) {
+		int N = 4;
+		
+		Main s = new Main();
 
         // Matrix A
         int[][] A = { { 1, 2, 3, 4 },
@@ -112,5 +117,5 @@ class Strassen {
                 System.out.print(C[i][j] + " ");
             System.out.println();
         }
-    }
+	}
 }
