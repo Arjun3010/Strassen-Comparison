@@ -1,8 +1,11 @@
 #include <algorithm>
 #include <iostream>
 #include <bits/stdc++.h>
+#include <chrono>
 
+using namespace std::chrono;
 using namespace std;
+
 int nextpowerof2(int k){
     return pow(2, int(ceil(log2(k))));
 }
@@ -146,8 +149,23 @@ void strassen_algorithm(vector<vector<int>> &A, vector<vector<int>> &B, int m, i
 
 
 int main() {
-    vector<vector<int>> a = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
-    vector<vector<int>> b = {{-1, 0, 0}, {0, -1, 0}, {0, 0, -1}};
-    strassen_algorithm(a, b, 3, 3, 3, 3);
+    vector<vector<int>> a = { { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 } };
+    vector<vector<int>> b = { { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 } };
+    
+
+    auto start = high_resolution_clock::now();
+    strassen_algorithm(a, b, 4, 4, 4, 4);
+    auto stop = high_resolution_clock::now();
+    
+    auto duration = duration_cast<microseconds>(stop - start);
+ 
+    cout << "Execution time: "
+         << duration.count() << " microseconds" << endl;
     return 0;
 }
