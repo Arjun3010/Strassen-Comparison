@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                            Online Java Compiler.
-                Code, Compile, Run and Debug java program online.
-Write your code in this editor and press "Run" button to execute it.
-
-*******************************************************************************/
-
 public class Main
 {
          public int[][] multiply(int[][] A, int[][] B)
@@ -98,17 +90,24 @@ public class Main
 
         // Matrix A
         int[][] A = { { 1, 2, 3, 4 },
-                    { 4, 3, 0, 1 },
-                    { 5, 6, 1, 1 },
-                    { 0, 2, 5, 6 } };
+                    { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 } };
         // Matrix B
-        int[][] B = { { 1, 0, 5, 1 },
-                    { 1, 2, 0, 2 },
-                    { 0, 3, 2, 3 },
-                    { 1, 2, 1, 2 } };
+        int[][] B = { { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 },
+                    { 1, 2, 3, 4 } };
 
-        // Matrix C computations
+        // Start Time
+        long start = System.nanoTime();
+
+    
+        // Matrix Multiplication
         int[][] C = s.multiply(A, B);
+        
+        // get the end time
+        long end = System.nanoTime();
 
         System.out.println("\nProduct of matrices A and B : ");
         
@@ -117,5 +116,11 @@ public class Main
                 System.out.print(C[i][j] + " ");
             System.out.println();
         }
+        
+        
+    
+        // execution time
+        long execution = end - start;
+        System.out.println("Execution time: " + execution + " nanoseconds");
 	}
 }
