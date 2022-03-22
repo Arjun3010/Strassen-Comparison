@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 
 def strassen_algorithm(x, y):
     if x.size == 1 or y.size == 1:
@@ -37,7 +37,10 @@ def strassen_algorithm(x, y):
 
 if __name__ == "__main__":
 
-    x = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
-    y = np.array([[-1, 0, 0], [0, -1, 0], [0, 0, -1]])
+    x = np.array([[ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ]])
+    y = np.array([[ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ]])
     print('Matrix multiplication result: ')
+    start = time.time()
     print(strassen_algorithm(x, y))
+    end = time.time()
+    print("The time of execution of above program is :", end - start)
