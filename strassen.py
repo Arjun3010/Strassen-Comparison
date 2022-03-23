@@ -1,6 +1,8 @@
+# Import Modules #
 import numpy as np
 import time
 
+# Strassen's Technique #
 def strassen_algorithm(x, y):
     if x.size == 1 or y.size == 1:
         return x * y
@@ -35,12 +37,25 @@ def strassen_algorithm(x, y):
 
     return result[: n, : n]
 
+# Main Function #
 if __name__ == "__main__":
-
+    start = time.time()
     x = np.array([[ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ]])
     y = np.array([[ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ] , [ 1 , 2 , 3 , 4 ]])
-    print('Matrix multiplication result: ')
-    start = time.time()
-    print(strassen_algorithm(x, y))
+    print('4 x 4 matrix', strassen_algorithm(x, y))
     end = time.time()
-    print("The time of execution of above program is :", end - start)
+    print("Execution time :", end - start)
+    
+    start = time.time()
+    x = np.array([[2, 0, 4, 4, 9, 0], [7, 8, 3, 4, 4, 7], [9, 8, 8, 0, 4, 4], [1, 2, 7, 6, 2, 0], [5, 2, 7, 5, 6, 8], [3, 5, 8, 1,7, 4]])
+    y = np.array([[5, 2, 5, 4, 0, 7], [1, 1, 3, 6, 3, 4], [8, 7, 2, 3, 7, 3], [3, 8, 7, 0, 0, 5], [3, 4, 8, 3, 4, 1], [6, 1, 6, 4, 8, 0]])
+    print('6 x 6 matrix', strassen_algorithm(x, y))
+    end = time.time()
+    print("Execution time :", end - start)
+    
+    start = time.time()
+    x = np.array([[4, 3, 4, 7, 3, 5, 7, 7], [5, 5, 5, 7, 6, 4, 6, 3], [6, 0, 5, 5, 3, 8, 7, 9], [8, 7, 4, 0, 5, 0, 0, 9], [7, 7, 9, 9, 9, 0, 3, 6], [5, 5, 4, 1, 6, 7, 1, 6], [4, 0, 5, 0, 3, 0, 1, 7], [9, 3, 7, 3, 9, 0, 0, 2]])
+    y = np.array([[9, 2, 3, 0, 0, 6, 7, 1], [2, 9, 7, 6, 6, 5, 3, 3], [4, 9, 7, 5, 6, 3, 8, 7], [6, 9, 4, 4, 2, 2, 7, 3], [5, 0, 5, 6, 9, 4, 1, 5], [3, 1, 1, 0, 5, 1, 3, 8], [3, 8, 3, 2, 3, 9, 2, 9], [1, 5, 0, 0, 1, 9, 2, 5]])
+    print('8 x 8 matrix', strassen_algorithm(x, y))
+    end = time.time()
+    print("Execution time :", end - start)
