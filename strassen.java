@@ -1,3 +1,4 @@
+// Main Class //
 public class Main
 {
          public int[][] multiply(int[][] A, int[][] B)
@@ -8,6 +9,7 @@ public class Main
         if (n == 1)
             R[0][0] = A[0][0] * B[0][0];
         else {
+            // Strassen's Technique //
             int[][] A11 = new int[n / 2][n / 2];
             int[][] A12 = new int[n / 2][n / 2];
             int[][] A21 = new int[n / 2][n / 2];
@@ -48,6 +50,7 @@ public class Main
         return R;
     }
     
+    // Matrix Subtraction //
     public int[][] sub(int[][] A, int[][] B)
     {
         int n = A.length;
@@ -59,6 +62,7 @@ public class Main
         return C;
     }
 
+    // Matrix Addition //
     public int[][] add(int[][] A, int[][] B)
     {
         int n = A.length;
@@ -83,44 +87,95 @@ public class Main
             for (int j1 = 0, j2 = jB; j1 < C.length; j1++, j2++)
                 P[i2][j2] = C[i1][j1];
     }
+    
+    // Main Function //
 	public static void main(String[] args) {
 		int N = 4;
 		
 		Main s = new Main();
 
-        // Matrix A
+        // Execution Time 4x4 matrix //
+        long start = System.nanoTime();
+        // Matrix A //
         int[][] A = { { 1, 2, 3, 4 },
                     { 1, 2, 3, 4 },
                     { 1, 2, 3, 4 },
                     { 1, 2, 3, 4 } };
-        // Matrix B
+        // Matrix B //
         int[][] B = { { 1, 2, 3, 4 },
                     { 1, 2, 3, 4 },
                     { 1, 2, 3, 4 },
                     { 1, 2, 3, 4 } };
-
-        // Start Time
-        long start = System.nanoTime();
-
-    
-        // Matrix Multiplication
+        // Matrix C //
         int[][] C = s.multiply(A, B);
-        
-        // get the end time
         long end = System.nanoTime();
-
-        System.out.println("\nProduct of matrices A and B : ");
-        
+        System.out.println("\n4 x 4 matrix : ");
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++)
                 System.out.print(C[i][j] + " ");
             System.out.println();
         }
-        
-        
-    
-        // execution time
         long execution = end - start;
+        System.out.println("Execution time: " + execution + " nanoseconds");
+        
+        // Execution Time 6x6 matrix//
+        start = System.nanoTime();
+        // Matrix A //
+        int[][] AA = { { 2, 0, 4, 4, 9, 0 },
+                    { 7, 8, 3, 4, 4, 7 },
+                    { 9, 8, 8, 0, 4, 4 },
+                    { 1, 2, 7, 6, 2, 0 },
+                    { 5, 2, 7, 5, 6, 8 },
+                    { 3, 5, 8, 1, 7, 4 } };
+        // Matrix B //
+        int[][] BB = { { 5, 2, 5, 4, 0, 7 },
+                    { 1, 1, 3, 6, 3, 4 },
+                    { 8, 7, 2, 3, 7, 3 },
+                    { 3, 8, 7, 0, 0, 5 }, 
+                    { 3, 4, 8, 3, 4, 1 },
+                    { 6, 1, 6, 4, 8, 0 } };
+        // Matrix C //
+        int[][] CC = s.multiply(AA, BB);
+        end = System.nanoTime();
+        System.out.println("\n6 x 6 matrix : ");
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++)
+                System.out.print(CC[i][j] + " ");
+            System.out.println();
+        }
+        execution = end - start;
+        System.out.println("Execution time: " + execution + " nanoseconds");
+        
+        // Execution Time 8x8 matrix//
+        start = System.nanoTime();
+        // Matrix A //
+        int[][] AAA = { { 4, 3, 4, 7, 3, 5, 7, 7 },
+                    { 5, 5, 5, 7, 6, 4, 6, 3 },
+                    { 6, 0, 5, 5, 3, 8, 7, 9 },
+                    { 8, 7, 4, 0, 5, 0, 0, 9 },
+                    { 7, 7, 9, 9, 9, 0, 3, 6 },
+                    { 5, 5, 4, 1, 6, 7, 1, 6 },
+                    { 4, 0, 5, 0, 3, 0, 1, 7 },
+                    { 9, 3, 7, 3, 9, 0, 0, 2 } };
+        // Matrix B //
+        int[][] BBB = { { 9, 2, 3, 0, 0, 6, 7, 1 },
+                    { 2, 9, 7, 6, 6, 5, 3, 3 },
+                    { 4, 9, 7, 5, 6, 3, 8, 7 },
+                    { 6, 9, 4, 4, 2, 2, 7, 3 },
+                    { 5, 0, 5, 6, 9, 4, 1, 5 },
+                    { 3, 1, 1, 0, 5, 1, 3, 8 },
+                    { 3, 8, 3, 2, 3, 9, 2, 9 },
+                    { 1, 5, 0, 0, 1, 9, 2, 5 } };
+        // Matrix C //
+        int[][] CCC = s.multiply(AAA, BBB);
+        end = System.nanoTime();
+        System.out.println("\n8 x 8 matrix : ");
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++)
+                System.out.print(CCC[i][j] + " ");
+            System.out.println();
+        }
+        execution = end - start;
         System.out.println("Execution time: " + execution + " nanoseconds");
 	}
 }
